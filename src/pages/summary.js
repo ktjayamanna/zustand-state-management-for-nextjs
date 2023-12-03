@@ -1,9 +1,13 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
+import useStore from "./store";
 
 export default function Summary() {
   const router = useRouter();
-  const { age, color } = router.query;
+  const { age, color } = useStore((state) => ({
+    age: state.age,
+    color: state.color,
+  }));
 
   const containerStyle = {
     paddingTop: "50px",

@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Link from "next/link";
+import useStore from "./store";
 
 export default function Home() {
-  const [age, setAge] = useState("");
+  const { age, setAge } = useStore((state) => ({
+    age: state.age,
+    setAge: state.setAge,
+  }));
 
   const containerStyle = {
     paddingTop: "50px",

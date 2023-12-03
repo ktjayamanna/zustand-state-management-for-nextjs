@@ -1,11 +1,15 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
+import useStore from "./store";
 
 export default function Color() {
   const router = useRouter();
-  const { age } = router.query; // Retrieve age from the query parameters
-  const [color, setColor] = useState("");
+  const { age, color, setColor } = useStore((state) => ({
+    age: state.age,
+    color: state.color,
+    setColor: state.setColor,
+  }));
 
   const containerStyle = {
     paddingTop: "50px",
